@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>School Teacher Presence System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            padding: 30px;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+            background: white;
+        }
+        th, td {
+            padding: 15px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        th {
+            background: #333;
+            color: white;
+        }
+        .present {
+            color: green;
+            font-weight: bold;
+        }
+        .outside {
+            color: red;
+            font-weight: bold;
+        }
+        button {
+            padding: 6px 12px;
+            margin: 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Teacher Presence Monitoring System</h1>
+
+<table>
+    <tr>
+        <th>Teacher Name</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    <tr>
+        <td>Madam Ana</td>
+        <td id="status1" class="outside">🔴 Outside</td>
+        <td>
+            <button onclick="setPresent('status1')">Present</button>
+            <button onclick="setOutside('status1')">Outside</button>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Madam Mshumbuzi</td>
+        <td id="status2" class="outside">🔴 Outside</td>
+        <td>
+            <button onclick="setPresent('status2')">Present</button>
+            <button onclick="setOutside('status2')">Outside</button>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Sir Mache</td>
+        <td id="status3" class="outside">🔴 Outside</td>
+        <td>
+            <button onclick="setPresent('status3')">Present</button>
+            <button onclick="setOutside('status3')">Outside</button>
+        </td>
+    </tr>
+</table>
+
+<script>
+    function setPresent(id) {
+        const status = document.getElementById(id);
+        status.textContent = "🟢 Present";
+        status.className = "present";
+    }
+
+    function setOutside(id) {
+        const status = document.getElementById(id);
+        status.textContent = "🔴 Outside";
+        status.className = "outside";
+    }
+</script>
+
+</body>
+</html>
+
