@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teacher Dashboard</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 80px;
+        }
+        .present { color: green; font-size: 22px; }
+        .outside { color: red; font-size: 22px; }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1 id="welcome"></h1>
+<div id="status" class="outside">🔴 Outside School</div>
+
+<button onclick="markPresent()">Mark Present</button>
+<button onclick="markOutside()">Mark Outside</button>
+<br><br>
+<button onclick="logout()">Logout</button>
+
+<script>
+const teacher = localStorage.getItem("teacher");
+document.getElementById("welcome").innerText = "Welcome, " + teacher;
+
+function saveStatus(statusText) {
+    const time = new Date().toLocaleString();
+    const records = JSON.parse(localStorage.getItem("records")) || [];
+    records.push({ teacher, status: statusText, time });
+    localStorage.setItem("records", JSON.stringify(records));
+}
+
+function markPresent() {
+    const status = document.getElementById("status");
+    status.innerText = "🟢 Present in School";
+    status.className = "present";
+    saveStatus("Present");
+}
+
+function markOutside() {
+    const status = document.getElementById("status");
+    status.innerText = "🔴 Outside School";
+    status.className = "outside";
+    saveStatus("Outside");
+}
+
+function logout() {
+    window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>
